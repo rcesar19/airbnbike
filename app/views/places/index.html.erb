@@ -1,14 +1,1 @@
 <h1>Index of Places</h1>
-
-<ul>
-  <% @places.each do |place| %>
-    <li>
-      <%= link_to "#{place.name} - address: #{place.address} - description: #{place.description} -
-      available #{place.available}", place_path(place)  %>
-    </li>
-  <% end %>
-</ul>
-
-<p>
-  <%= link_to 'Add place', new_place_path %>
-</p>
