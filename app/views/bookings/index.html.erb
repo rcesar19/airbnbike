@@ -1,0 +1,13 @@
+<h1>Index of Bookings</h1>
+
+<ul>
+  <% @bookings.each do |booking| %>
+    <li>
+      <%= link_to "#{booking.name} - Rating: #{booking.rating}", booking_path(booking)  %>
+    </li>
+  <% end %>
+</ul>
+
+<p>
+  <%= link_to 'Add booking', new_booking_path %>
+</p>
