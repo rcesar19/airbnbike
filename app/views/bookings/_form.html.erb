@@ -1,0 +1,22 @@
+<%= form_for(@booking) do |f| %>
+
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :date %>
+    <%= f.text_field :date %>
+  </p>
+
+  <p>
+    <%= f.label :confirmed %>
+    <%= f.text_field :confirmed %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
