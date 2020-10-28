@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
 
   # GET http://localhost:3000/bookings
   def index
-    @bookings = booking.all
+    @bookings = Booking.all
   end
 
   # GET http://localhost:3000/bookings/1
@@ -14,14 +14,14 @@ class BookingsController < ApplicationController
 
   # GET http://localhost:3000/bookings/1
   def new
-    @booking = booking.new
+    @booking = Booking.new
   end
 
   # POST http://localhost:3000/bookings
   def create
     # params[:booking] => {"name"=>"teste", "address"=>"endereço", "rating"=>"10"}
 
-    @booking = booking.new(booking_params)
+    @booking = Booking.new(booking_params)
     @booking.save
 
     redirect_to booking_path(@booking)
@@ -49,7 +49,7 @@ class BookingsController < ApplicationController
   private
 
   def set_booking
-    @booking = booking.find(params[:id])
+    @booking = Booking.find(params[:id])
   end
 
   def booking_params

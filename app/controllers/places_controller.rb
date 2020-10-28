@@ -1,9 +1,9 @@
 class PlacesController < ApplicationController
-  before_action :set_place, only: [:show, :edit, :update, :destroy]
+  # before_action :set_place, only: [:show, :edit, :update, :destroy]
 
   # GET http://localhost:3000/places
   def index
-    @places = place.all
+    @places = Place.all
   end
 
   # GET http://localhost:3000/places/1
@@ -13,14 +13,14 @@ class PlacesController < ApplicationController
 
   # GET http://localhost:3000/places/1
   def new
-    @place = place.new
+    @place = Place.new
   end
 
   # POST http://localhost:3000/places
   def create
     # params[:place] => {"name"=>"teste", "address"=>"endereço", "rating"=>"10"}
 
-    @place = place.new(place_params)
+    @place = Place.new(place_params)
     @place.save
 
     redirect_to place_path(@place)
@@ -48,7 +48,7 @@ class PlacesController < ApplicationController
   private
 
   def set_place
-    @place = place.find(params[:id])
+    @place = Place.find(params[:id])
   end
 
   def place_params
