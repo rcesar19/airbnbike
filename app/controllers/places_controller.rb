@@ -2,22 +2,28 @@ class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
 
   def index
-    @places = Place.all
+    # @places = Place.all
+    @places = policy_scope(Place)
   end
 
   def show
-    @place = Place.find(params[:id])
   end
 
   def new
     @place = Place.new
+    authorize @place
   end
 
   def create
     @place = Place.new(place_params)
-    @place.save
+    @place.user = current_user
+    authorize @place
 
-    redirect_to place_path(@place)
+    if @place.save
+      redirect_to place_path(@place)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -40,6 +46,7 @@ class PlacesController < ApplicationController
 
   def set_place
     @place = Place.find(params[:id])
+    authorize @place
   end
 
   def place_params
