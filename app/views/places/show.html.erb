@@ -1,8 +1,36 @@
-<h1>Info about Places</h1>
+<h1></h1>
+<div class="d-flex justify-content-center">
+  <p><%= @place.name %></p>
+</div>
+<div class="d-flex justify-content-center">
+  <p><%= @place.address %></p>
+</div>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    
+  </div>
+</div>
 
-<p>Name: <%= @place.name %></p>
-<p>Address: <%= @place.address %></p>
-<p>Description: <%= @place.description %></p>
+<div class='container mt-3'>
+<div class="d-flex justify-content-between" >
+  <p>Description: <%= @place.description %></p>
+  <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/cveneziani" />
+</div>
+</div>
+
+<div class='container mt-3'>
+<div clas='booking-form'>
+    <div class='preço-rating'>
+      <div class= 'preço'>
+        <h1> R$ 100 / noite </h1>  
+      </div>
+      <div class= 'stars'>
+        <h1> 4.9 </h1>  
+      </div>
+  </div> >
+</div>
+</div>>
+
 
 <!-- Não use tag a no rails, sempre use link_to -->
 <!-- <a href="/places">All places</a> -->
