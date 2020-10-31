@@ -6,7 +6,7 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @place = place.find(params[:id])
+    @place = Place.find(params[:id])
   end
 
   def new
@@ -43,6 +43,6 @@ class PlacesController < ApplicationController
   end
 
   def place_params
-    params.require(:place).permit(:name, :address, :rating)
+    params.require(:place).permit(:name, :address, :description)
   end
 end
