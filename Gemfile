@@ -36,6 +36,8 @@ gem 'simple_form'
 
 gem 'autoprefixer-rails'
 
+gem 'pundit'
+
 gem 'simple_form'
 
 group :development, :test do
