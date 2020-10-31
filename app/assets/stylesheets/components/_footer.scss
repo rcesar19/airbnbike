@@ -1,6 +1,9 @@
-body{
-  position: relative;  
+
+body {
+  position: relative;
+  min-height: 100vh;
 }
+
 
 .footer {
   margin-top: 40px;
@@ -14,6 +17,9 @@ body{
   position: absolute;
   bottom: 0;
   width: 100%;
+
+  margin-top: 30px;
+
 }
 
 .footer-links {

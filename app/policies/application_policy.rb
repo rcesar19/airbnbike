@@ -6,6 +6,10 @@ class ApplicationPolicy
     @record = record
   end
 
+  def home?
+    true
+  end
+
   def index?
     false
   end
@@ -31,6 +35,7 @@ class ApplicationPolicy
   end
 
   def destroy?
+    new
     false
   end
 
