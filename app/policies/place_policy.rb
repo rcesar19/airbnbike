@@ -18,7 +18,7 @@ class PlacePolicy < ApplicationPolicy
   end
 
   def edit?
-   is_owner?
+    is_owner?
   end
 
   def show?
@@ -27,13 +27,17 @@ class PlacePolicy < ApplicationPolicy
 
   def destroy?
     is_owner?
-   end
+  end
+
+  def update?
+    is_owner?
+  end
 
   private
 
-  def is_owner
+  def is_owner?
     # user   ==> current_user
     # record ==> @place
-    record.user == user
+    record.user_id == user.id
   end
 end

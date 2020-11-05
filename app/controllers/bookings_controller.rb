@@ -18,13 +18,20 @@ class BookingsController < ApplicationController
   end
 
   # POST http://localhost:3000/bookings
+
   def create
-    # params[:booking] => {"name"=>"teste", "address"=>"endereço", "rating"=>"10"}
+    # filled in form
+    @place = Place.find(params[:place_id])
     @booking = Booking.new(booking_params)
-    @booking.user_id = current_user.id
-    @booking.place_id = @place.id
+    # logged_in user assign
+    @booking.user = current_user
+    @booking.place = @place
+    @booking.confirmed = nil
+    # authorization of booking
+    authorize @booking
     if @booking.save
-      redirect_to booking_path(@booking)
+      # redirect_to to-all-bookings/dashboard
+      redirect_to places_path
     else
       render :new
     end
@@ -49,6 +56,20 @@ class BookingsController < ApplicationController
     @place = @booking.place
     @booking.destroy
     redirect_to bookings_path(@place)
+  end
+
+  def accept
+    @booking = Booking.find(params[:id])
+    @booking.confirmed = true
+    @booking.save
+    redirect_to booking_path(@booking)
+  end
+
+  def decline
+    @booking = Booking.find(params[:id])
+    @booking.confirmed = false
+    @booking.save
+    redirect_to booking_path(@booking)
   end
 
   private

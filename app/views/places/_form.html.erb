@@ -1,28 +1,10 @@
 
-<%= form_for(@place) do |f| %>
-
-  <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </p>
-
-  <p>
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-  </p>
-
-  <p>
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-  </p>
-
-  <p>
-    <%= f.label :available %>
-    <%= f.text_field :available %>
-  </p>
-
-  <p>
-    <%= f.submit %>
-  </p>
-
-<% end %>
+<div class="container mt-3">
+  <%= simple_form_for(@place) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :address %>
+    <%= f.input :description %>
+    <%= f.input :available %>
+    <%= f.submit class: "btn btn-ghost" %>
+  <% end %>
+</div>
