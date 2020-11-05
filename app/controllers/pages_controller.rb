@@ -6,3 +6,10 @@ class PagesController < ApplicationController
     @places = Place.all.sample(6)
   end
 end
+
+# if params[:search][:query].present?
+#   @places = Place.global_search(params[:search][:query])
+# else
+#   @places = Place.all.sample(6)
+# end
+# end

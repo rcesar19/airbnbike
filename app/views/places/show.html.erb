@@ -32,6 +32,12 @@
   </div>
 </div>>
 
+<div id="map"
+  style="width: 100%; height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+
 
 <!-- Não use tag a no rails, sempre use link_to -->
 <!-- <a href="/places">All places</a> -->
