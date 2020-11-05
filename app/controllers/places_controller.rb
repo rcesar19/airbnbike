@@ -1,12 +1,25 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
-
+  
   def index
+    skip_authorization
     # @places = Place.all
-    @places = policy_scope(Place)
+    # @places = policy_scope(Place)
+    if params[:query].present?
+      @places = policy_scope(Place).global_search(params[:query])
+    else
+      @places = policy_scope(Place).all
+    end
   end
-
+ 
   def show
+    @places = policy_scope(Place)
+    @markers = @places.geocoded.map do |place|
+      {
+        lat: place.latitude,
+        lng: place.longitude
+      }
+    end
   end
 
   def new
