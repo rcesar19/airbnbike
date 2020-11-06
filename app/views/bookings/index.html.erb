@@ -3,7 +3,7 @@
 <ul>
   <% @bookings.each do |booking| %>
     <li>
-      <%= link_to "#{booking.place.name}", booking_path(booking)  %>
+      <%= link_to "#{booking.place.date}", booking_path(booking)  %>
     </li>
   <% end %>
 </ul>

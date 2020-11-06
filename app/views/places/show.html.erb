@@ -5,7 +5,8 @@
 <div class="d-flex justify-content-center">
   <p><%= @place.address %></p>
 </div>
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+<% background = @place.photos.attached? ? cl_image_path(@place.photos.first.key) : 'https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png'%>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= background %>);">
   <div class="container">
 
   </div>
@@ -23,10 +24,10 @@
     <div class='preço-rating'>
 
         <div class= 'preço'>
-          <h1> R$ <%= @place.price %> / noite </h1>  
+          <h1> R$ <%= @place.price %> / noite </h1>
         </div>
         <div class= 'stars'>
-          <h1> 4.9 </h1>  
+          <h1> 4.9 </h1>
         </div>
     </div> >
   </div>
