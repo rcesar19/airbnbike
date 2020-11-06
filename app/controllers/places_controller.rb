@@ -1,6 +1,6 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     skip_authorization
     # @places = Place.all
@@ -11,7 +11,7 @@ class PlacesController < ApplicationController
       @places = policy_scope(Place).all
     end
   end
- 
+
   def show
     @places = policy_scope(Place)
     @markers = @places.geocoded.map do |place|
@@ -63,6 +63,6 @@ class PlacesController < ApplicationController
   end
 
   def place_params
-    params.require(:place).permit(:name, :address, :description, :photos)
+    params.require(:place).permit(:name, :address, :description, :price, photos: [])
   end
 end
