@@ -1,6 +1,6 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     skip_authorization
     # @places = Place.all
@@ -11,8 +11,9 @@ class PlacesController < ApplicationController
       @places = policy_scope(Place).all
     end
   end
- 
+
   def show
+    @booking = Booking.new
     @places = policy_scope(Place)
     @markers = @places.geocoded.map do |place|
       {

@@ -1,20 +1,17 @@
 class BookingsController < ApplicationController
 
-  before_action :set_place, only: [ :new, :create, :edit ]
+  before_action :set_booking, only: [:show, :accept, :decline]
 
-  # GET http://localhost:3000/bookings
-  # def index
-  #   @bookings = Booking.all
-  # end
-
-  # GET http://localhost:3000/bookings/1
-  # def show
-  #   # @booking = booking.find(params[:id]) # before_action
-  # end
+  def show
+    @booking = booking.find(params[:id]) # before_action
+  end
 
   # GET http://localhost:3000/bookings/1
   def new
+    # book particular flat by booking's flat_id
+    @place = Place.find(params[:place_id])
     @booking = Booking.new
+    authorize @booking
   end
 
   # POST http://localhost:3000/bookings
@@ -22,7 +19,7 @@ class BookingsController < ApplicationController
   def create
     # filled in form
     @place = Place.find(params[:place_id])
-    @booking = Booking.new(booking_params)
+    @booking = Booking.new
     # logged_in user assign
     @booking.user = current_user
     @booking.place = @place
@@ -33,7 +30,7 @@ class BookingsController < ApplicationController
       # redirect_to to-all-bookings/dashboard
       redirect_to places_path
     else
-      render :new
+      render :show
     end
   end
 
@@ -74,11 +71,11 @@ class BookingsController < ApplicationController
 
   private
 
-  def set_place
-    @place = Place.find(params[:place_id])
+  def booking_params
+    params.require(:booking).permit(:confirmed, :place_id, :date)
   end
 
-  def booking_params
-    params.require(:booking).permit(:date)
+  def set_booking
+    @booking = Booking.find(params[:id])
   end
 end
