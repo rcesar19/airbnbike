@@ -1,0 +1,35 @@
+<h2>Olá, <%= current_user.email %></h2>
+
+<h1>Minhas reservas</h1>
+
+<ul>
+  <% @bookings.each do |booking| %>
+    <% if booking.user_id == current_user.id %>
+      <% if booking.confirmed.nil?  %>
+        <% status = "Pendente"  %>
+      <% else %>
+        <% status = booking.confirmed ? "Confirmado" : "Recusado"  %>
+      <% end %>
+      <li><%= booking.place.name %> / <%= booking.user_id %> / <%= booking.date %> / <%= status %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<h1>Minhas casas</h1>
+
+<ul>
+  <% @bookings.each do |booking| %>
+    <% @places.each do |place| %>
+      <% if place.user_id == current_user.id %>
+        <% if place.id == booking.place_id %>
+          <% if booking.confirmed.nil?  %>
+            <% status = "Pendente"  %>
+          <% else %>
+            <% status = booking.confirmed ? "Confirmado" : "Recusado"  %>
+          <% end %>
+          <li><%= booking.place.name %> / Host: <%= place.user_id %> / Guest: <%= booking.user_id %> / <%= booking.date %> / <%= status %></li>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>

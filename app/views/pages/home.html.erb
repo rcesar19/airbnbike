@@ -13,17 +13,18 @@
     </div>
     <h1>Airbnbike <strong></strong><strong></strong></h1>
     <p>Encontre onde passar a noite durante a sua jornada.</p>
+    <%= link_to "Veja todos os locais", places_path, class: "btn btn-flat" %>
   </div>
 </div>
 
 <div class='container mt-3'>
-<div class="cards">
-<% @places.each do |place| %>
-  <%= link_to place_path(place) do %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-      <%= place.name %>
-    </div>
-  <% end %>
-<% end %>
-</div>
+  <div class="cards">
+    <% @places.each do |place| %>
+      <%= link_to place_path(place) do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          <%= place.name %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
