@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :places, only: [ :index, :create, :edit, :show, :update, :new ] do
     resources :bookings, only: [ :index, :create, :edit, :show, :update ]
   end
+
+  get "/dashboard", to: "dashboard#index"
   get "/bookings/:id/accept", to: "bookings#accept", as: :accept_booking
   get "/bookings/:id/decline", to: "bookings#decline", as: :decline_booking
 
