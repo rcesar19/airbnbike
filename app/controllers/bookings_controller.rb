@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
 
   before_action :set_booking, only: [:show, :accept, :decline]
 
+
   def index
     @bookings = Booking.all
     @places = Place.all
