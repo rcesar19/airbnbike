@@ -20,6 +20,26 @@ class PlacesController < ApplicationController
       }]
   end
 
+  # def accept
+  #   raise
+  #   @place = Place.find(params[:place_id])
+  #   if @place.user_id == current_user.id
+  #     @booking.confirmed = true
+  #     authorize @booking
+  #     # owner's dashboard
+  #     redirect_to dashboard_path, notice: "You have accepted booking of place # #{@place.name}"
+  #   end
+  # end
+
+  # def decline
+  #   @place = Place.find(params[:flat_id])
+  #   if @place.user_id == current_user.id
+  #     @booking.confirmed = false
+  #     authorize @booking
+  #     redirect_to dashboard_path, alert: "You have declined booking of flat # #{@place.name}"
+  #   end
+  # end
+
   def new
     @place = Place.new
     authorize @place

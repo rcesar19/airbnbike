@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   end
 
   get "/dashboard", to: "dashboard#index"
-  get "/bookings/:id/accept", to: "bookings#accept", as: :accept_booking
-  get "/bookings/:id/decline", to: "bookings#decline", as: :decline_booking
+  get "/bookings/:id/accept", to: "bookings#accept", as: :accept_bookings
+  get "/bookings/:id/decline", to: "bookings#decline", as: :decline_bookings
 
 
 

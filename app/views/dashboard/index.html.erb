@@ -4,7 +4,7 @@
 
 <ul>
   <% @bookings.each do |booking| %>
-    <% if booking.user_id == current_user.id %>
+
       <% if booking.confirmed.nil?  %>
         <% status = "Pendente"  %>
       <% else %>
@@ -12,24 +12,26 @@
       <% end %>
       <li><%= booking.place.name %> / <%= booking.user_id %> / <%= booking.date %> / <%= status %></li>
     <% end %>
-  <% end %>
 </ul>
 
 <h1>Minhas casas</h1>
 
 <ul>
-  <% @bookings.each do |booking| %>
+
     <% @places.each do |place| %>
-      <% if place.user_id == current_user.id %>
-        <% if place.id == booking.place_id %>
-          <% if booking.confirmed.nil?  %>
+      <% place.bookings.each do |booking| %>
+        <% if booking.confirmed.nil?  %>
             <% status = "Pendente"  %>
           <% else %>
             <% status = booking.confirmed ? "Confirmado" : "Recusado"  %>
           <% end %>
-          <li><%= booking.place.name %> / Host: <%= place.user_id %> / Guest: <%= booking.user_id %> / <%= booking.date %> / <%= status %></li>
+          <li><%= booking.place.name %> / Host: <%= place.user_id %> / Guest: <%= booking.user_id %> /
+            <%= booking.date %> / <%= status %>
+            <%= link_to "Accept", accept_bookings_path(booking) %>
+            <%= link_to "Decline", decline_bookings_path(booking) %>
+            </li>
         <% end %>
       <% end %>
-    <% end %>
-  <% end %>
+
+
 </ul>
