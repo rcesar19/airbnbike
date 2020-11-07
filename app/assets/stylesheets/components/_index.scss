@@ -9,4 +9,12 @@
 @import "button";
 @import "booking-form";
 @import "card-white";
-@import "description-price";
+@import "card-trip";
+a{
+    text-decoration: none !important;
+    color: black;
+    :hover{
+        color: gray;
+    }
+}
+

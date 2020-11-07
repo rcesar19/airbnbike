@@ -1,26 +1,28 @@
 
 <div class='container'>
-<div class="cards">
-<% @places.each do |place| %>
-  <%= link_to place_path(place) do %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-      <%= place.name %>
+  <div class="cards">
+    <% @places.each do |place| %>
+      <%= link_to place_path(place) do %>
+      <div class="card-trip">
+      <% if place.photos.first.present? %>
+        <%= cl_image_tag place.photos.first.key, crop: :fill %>
+      <% else %>
+       <img src= 'https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg' />
+      <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= place.name %></h2>
+            <p><%= place.description %></p>
+          </div>
+          <h2 class="card-trip-pricing">$ <%= place.price.to_i %> / noite</h2>
+          <% if place.user.photo.attached? %>
+              <%= cl_image_tag place.user.photo.key, height: 40, width: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
+              <%= image_tag "https://static.thenounproject.com/png/2643420-200.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
+        </div>
+      </div>
+    <% end %>
+    <% end %>
   </div>
-  <% end %>
-<% end %>
 </div>
-</div>
-
-
-<div class="card-trip">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-  <div class="card-trip-infos">
-    <div>
-      <h2>Title here</h2>
-      <p>Short description here!</p>
-    </div>
-    <h2 class="card-trip-pricing">£99.99</h2>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-  </div>
-</div>
-
