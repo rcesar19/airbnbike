@@ -5,4 +5,7 @@ class PagesController < ApplicationController
   def home
     @places = Place.all.sample(6)
   end
+
+
+
 end
