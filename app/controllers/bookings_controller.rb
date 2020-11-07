@@ -17,6 +17,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new
     @booking.user = current_user
     @booking.place = @place
+    @booking.date = Date.new(params[:booking][:"date(1i)"].to_i, params[:booking][:"date(2i)"].to_i, params[:booking][:"date(3i)"].to_i)
     @booking.confirmed = nil
     authorize @booking
 
