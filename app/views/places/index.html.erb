@@ -15,11 +15,6 @@
             <p><%= place.description %></p>
           </div>
           <h2 class="card-trip-pricing">$ <%= place.price.to_i %> / noite</h2>
-          <% if place.user.photo.attached? %>
-              <%= cl_image_tag place.user.photo.key, height: 40, width: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% else %>
-              <%= image_tag "https://static.thenounproject.com/png/2643420-200.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% end %>
         </div>
       </div>
     <% end %>
