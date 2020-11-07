@@ -14,6 +14,7 @@ users.each do |user|
     name: Faker::Restaurant.name,
     address: Faker::Address.street_address,
     description: Faker::ChuckNorris.fact,
-    user_id: user.id
+    user_id: user.id,
+    price: rand(50..300)
     )
 end

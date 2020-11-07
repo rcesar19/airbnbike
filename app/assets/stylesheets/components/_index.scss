@@ -8,4 +8,14 @@
 @import "search-bar";
 @import "button";
 @import "booking-form";
-@import "banner_show";
+@import "card-white";
+@import "card-trip";
+a{
+    text-decoration: none !important;
+    color: black;
+    :hover{
+        color: gray;
+    }
+}
+
+
