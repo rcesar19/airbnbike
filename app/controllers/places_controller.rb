@@ -38,17 +38,14 @@ class PlacesController < ApplicationController
   end
 
   def edit
-    # @place = place.find(params[:id])
   end
 
   def update
-    # @place = place.find(params[:id]) # before_action
     @place.update(place_params)
     redirect_to place_path(@place)
   end
 
   def destroy
-    # @place = place.find(params[:id])
     @place.destroy
     redirect_to places_path
   end
@@ -61,6 +58,6 @@ class PlacesController < ApplicationController
   end
 
   def place_params
-    params.require(:place).permit(:name, :address, :description, :price, photos: [])
+    params.require(:place).permit(:name, :address, :description, :price, photos:[])
   end
 end
