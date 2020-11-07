@@ -1,12 +1,5 @@
 <h1>Index of Bookings</h1>
 
-<ul>
-  <% @bookings.each do |booking| %>
-    <li>
-      <%= link_to "#{booking.place.date}", booking_path(booking)  %>
-    </li>
-  <% end %>
-</ul>
 
 <p>
   <%= link_to 'Accept this booking', accept_booking_path(@booking) %>
@@ -19,3 +12,4 @@
 <p>
   <%= link_to 'Add booking', new_booking_path %>
 </p>
+
