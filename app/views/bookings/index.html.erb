@@ -1,21 +1,33 @@
-<h1>Index of Bookings</h1>
+<h1>Minhas reservas</h1>
 
-<ul>
-  <% @bookings.each do |booking| %>
-    <li>
-      <%= link_to "#{booking.place.date}", booking_path(booking)  %>
-    </li>
+<div>
+<% @bookings.each do |booking| %>
+  <% if booking.user_id == current_user.id %>
+    <% if booking.confirmed.nil?  %>
+      <% status = "Pendente"  %>
+    <% else %>
+      <% status = booking.confirmed ? "Confirmado" : "Recusado"  %>
+    <% end %>
+    <li><%= booking.place.name %> / <%= booking.user_id %> / <%= booking.date %> / <%= status %></li>
   <% end %>
-</ul>
+<% end %>
+</div>
 
-<p>
-  <%= link_to 'Accept this booking', accept_booking_path(@booking) %>
-</p>
+<h1>Minhas casas</h1>
 
-<p>
-  <%= link_to 'Decline this booking', decline_booking_path(@booking) %>
-</p>
-
-<p>
-  <%= link_to 'Add booking', new_booking_path %>
-</p>
+<div>
+<% @bookings.each do |booking| %>
+  <% @places.each do |place| %>
+    <% if place.user_id == current_user.id %>
+      <% if place.id == booking.place_id %>
+        <% if booking.confirmed.nil?  %>
+          <% status = "Pendente"  %>
+        <% else %>
+          <% status = booking.confirmed ? "Confirmado" : "Recusado"  %>
+        <% end %>
+        <li><%= booking.place.name %> / Host: <%= place.user_id %> / Guest: <%= booking.user_id %> / <%= booking.date %> / <%= status %></li>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+</div>
