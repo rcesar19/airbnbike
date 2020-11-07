@@ -3,9 +3,9 @@ class BookingsController < ApplicationController
   before_action :set_place, only: [ :new, :create, :edit ]
 
   # GET http://localhost:3000/bookings
-  # def index
-  #   @bookings = Booking.all
-  # end
+  def index
+    @bookings = Booking.all
+  end
 
   # GET http://localhost:3000/bookings/1
   # def show
