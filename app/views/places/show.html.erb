@@ -43,11 +43,20 @@
         <div class= 'preço'>
           <h2> R$ <%= @place.price.round %> / noite </h2>  
         </div>
-        <%# <div class= 'stars'>
-          <h1> 4.9 </h1>  
-        </div> %>
+
     </div>
   </div>
+</div>
+
+
+<% unless current_user.id == @place.user_id %>
+  <%= render 'bookings/new' %>
+  <% else %>
+    <% if policy(@place).update? %>
+      <%= link_to "Update place", edit_place_path(@place) %>
+    <% end %>
+<% end %>
+
 
 <div id="map"
   style="width: 600px; height: 400px;"
