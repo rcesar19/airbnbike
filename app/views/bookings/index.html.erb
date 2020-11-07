@@ -1,21 +1,15 @@
 <h1>Index of Bookings</h1>
 
-<ul>
+
+  <% @places.each do |place| %>
   <% @bookings.each do |booking| %>
-    <li>
-      <%= link_to "#{booking.place.date}", booking_path(booking)  %>
-    </li>
-  <% end %>
-</ul>
-
-<p>
-  <%= link_to 'Accept this booking', accept_booking_path(@booking) %>
-</p>
-
-<p>
-  <%= link_to 'Decline this booking', decline_booking_path(@booking) %>
-</p>
-
-<p>
-  <%= link_to 'Add booking', new_booking_path %>
-</p>
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <% if booking.place_id == place.id %>
+      <li><%= booking.created_at %></li>
+      <li><%= booking.status %></li>
+      <li>Booking_Place_id<%= booking.place_id %></li>
+      <li>Place_id<%= place.id %></li>
+      <li>Place_name<%= place.name %></li>
+      <li>User of place<%= place.user.id %></li>
+  </div>
