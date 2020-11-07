@@ -13,13 +13,11 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @places = policy_scope(Place)
-    @markers = @places.geocoded.map do |place|
-      {
-        lat: place.latitude,
-        lng: place.longitude
-      }
-    end
+    @markers = 
+      [{
+        lat: @place.latitude,
+        lng: @place.longitude
+      }]
   end
 
   def new

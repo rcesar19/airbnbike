@@ -1,22 +1,4 @@
 
-body {
-  position: relative;
-  min-height: 100vh;
-}
-
-.footer {
-  background: #F4F4F4;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 60px;
-  padding: 0px 50px;
-  color: rgba(110, 110, 110, 0.3);
-  position: relative;
-  bottom: 0;
-  width: 100%;
-}
-
 .footer-links {
   display: flex;
   align-items: center;
@@ -36,4 +18,28 @@ body {
 
 .footer .fa-heart {
   color: #D23333;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 50px;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #F4F4F4;
+  color: rgba(110, 110, 110, 0.3);
 }
