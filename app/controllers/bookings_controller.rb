@@ -49,38 +49,21 @@ class BookingsController < ApplicationController
     redirect_to bookings_path(@place)
   end
 
-  # def accept
-  #   @booking = Booking.find(params[:id])
-  #   @booking.confirmed = true
-  #   @booking.save
-  #   redirect_to booking_path(@booking)
-  # end
-
-  # def decline
-  #   @booking = Booking.find(params[:id])
-  #   @booking.confirmed = false
-  #   @booking.save
-  #   redirect_to booking_path(@booking)
-  # end
-
   def accept
-  @place = Place.find(params[:place_id])
-  if @place.user == current_user.id
-    @booking.confirmed = true
     authorize @booking
-    # owner's dashboard
-    redirect_to places_path, notice: "You have accepted booking of place # #{@place.name}"
+    @booking.update(confirmed: true)
+    if @booking.save
+      redirect_to dashboard_path, notice: "You have accepted booking of place # #{@booking.place.name}"
+    end
   end
-end
 
-def decline
-  @place = Place.find(params[:flat_id])
-  if @place.user == current_user.id
-    @booking.confirmed = false
+  def decline
     authorize @booking
-    redirect_to places_path, alert: "You have declined booking of flat # #{@place.name}"
+    @booking.update(confirmed: false)
+    if @booking.save
+      redirect_to dashboard_path, alert: "You have declined booking of flat # #{@booking.place.name}"
+    end
   end
-end
 
   private
 
