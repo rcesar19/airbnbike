@@ -1,20 +1,37 @@
-<h1></h1>
 <div class="d-flex justify-content-center">
   <p><%= @place.name %></p>
 </div>
 <div class="d-flex justify-content-center">
   <p><%= @place.address %></p>
 </div>
-<% background = @place.photos.attached? ? cl_image_path(@place.photos.first.key) : 'https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png'%>
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= background %>);">
-  <div class="container">
 
+<div class="container">
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+    </div>
+    <div class="carousel-item">
+      <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+    </div>
+    <div class="carousel-item">
+      <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+    </div>
   </div>
+  <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 </div>
 
 <div class='container mt-3'>
 <div class="d-flex justify-content-between" >
-  <p>Description: <%= @place.description %></p>
+  <p><%= @place.description %></p>
   <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/cveneziani" />
 </div>
 </div>
@@ -24,19 +41,19 @@
     <div class='preço-rating'>
 
         <div class= 'preço'>
-          <h1> R$ <%= @place.price %> / noite </h1>
+          <h2> R$ <%= @place.price.round %> / noite </h2>  
         </div>
-        <div class= 'stars'>
-          <h1> 4.9 </h1>
-        </div>
-    </div> >
+        <%# <div class= 'stars'>
+          <h1> 4.9 </h1>  
+        </div> %>
+    </div>
   </div>
-</div> >
 
 <div id="map"
-  style="width: 100%; height: 600px;"
+  style="width: 600px; height: 400px;"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
 </div>
 
 
